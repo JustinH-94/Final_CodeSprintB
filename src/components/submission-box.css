@@ -1,0 +1,23 @@
+.form__control {
+  display: grid;
+  justify-content: center;
+  row-gap: 10px;
+  column-gap: 10px;
+  border: 1rem;
+}
+
+.select__box {
+  width: 10rem;
+  height: 20px;
+  font-size: 15px;
+  margin: 0 0 0 10rem;
+}
+.form__submit {
+  margin: 1rem 15rem 0 15rem;
+  height: 30px;
+  font-size: 20px;
+}
+
+.textbox {
+  width: 100px;
+}

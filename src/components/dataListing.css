@@ -1,0 +1,14 @@
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 0.25rem 0 0 50%;
+}
+
+.order__of {
+  margin: 3% 0 0 80%;
+  width: 8%;
+  height: 30px;
+  font-size: 20px;
+}

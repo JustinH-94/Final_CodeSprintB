@@ -1,0 +1,21 @@
+.login {
+  margin: 0 0 0 35%;
+  text-align: right;
+  color: rgb(123, 253, 97);
+  border-style: solid;
+  font-size: 2rem;
+}
+
+.reviews {
+  margin: 0 0 0 35%;
+  text-align: right;
+  color: rgb(123, 253, 97);
+  font-size: 2rem;
+}
+
+.logo {
+  margin: 0 0 0 10%;
+  text-align: right;
+  color: rgb(123, 253, 97);
+  font-size: 2rem;
+}
