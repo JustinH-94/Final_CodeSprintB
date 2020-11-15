@@ -1,22 +1,15 @@
 import React, { useState } from 'react'
-import db, { gamesCollection, m4gCollection, moviesCollection, tvCollection } from '../data/firebase';
+import  {m4gCollection} from '../data/firebase';
 import SubmissionBox from './submission-box';
-
 function AddForm() {
     const [saving, setSaving] =useState(false);
     const [isSuccessMessage, setISSuccessMessage] =useState("");
 
-    const onFormSubmit = async (title, rating, releaseYr, type, addition) =>{
+    const onFormSubmit = async (data) =>{
         setSaving(true);
         setISSuccessMessage("");
         try{
-            await m4gCollection.add({
-                title,
-                rating,
-                releaseYr,
-                type, 
-                addition
-            })
+            await m4gCollection.add(data)
             setISSuccessMessage("Successfully Saved The Submission!");
             console.log("Saved");
         }

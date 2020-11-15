@@ -1,21 +1,27 @@
 .login {
-  margin: 0 0 0 35%;
+  margin: 0 0 0 30%;
   text-align: right;
   color: rgb(123, 253, 97);
   border-style: solid;
   font-size: 2rem;
 }
 
-.reviews {
-  margin: 0 0 0 35%;
+.logo {
+  margin: 0 0 0 30%;
   text-align: right;
   color: rgb(123, 253, 97);
   font-size: 2rem;
 }
-
-.logo {
-  margin: 0 0 0 10%;
-  text-align: right;
+nav {
+  background-color: #202020;
+  max-width: 100%;
+  height: 120px;
+  font-size: 20px;
+  text-align: center;
   color: rgb(123, 253, 97);
-  font-size: 2rem;
+}
+.review_link,
+.news_link {
+  color: rgb(123, 253, 97);
+  text-decoration: none;
 }

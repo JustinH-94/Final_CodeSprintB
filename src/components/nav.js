@@ -6,12 +6,12 @@ import "./nav.css"
 function Nav() {
     return (
         <nav>
-            <Link className="add_link" to="/add" style={{textDecoration:'none'}}>
-                <img src={Plus}/>
+            <Link  className="add_link" to="/add" style={{textDecoration:'none'}}>
+                <img alt="" src={Plus}/>
             </Link>
-            <Link className="logo" to="/" style={{textDecoration:'none'}}>M4G</Link>
-            <Link className="reviews" to="/reviews" style={{textDecoration:'none'}}>Reviews</Link>
+            <Link className="logo" to="/" style={{textDecoration:'none'}}>RNG</Link>
             <Link className="login" to="/" style={{textDecoration:'none'}}>Login</Link>
+            <div><Link className="review_link" to="/review">Review</Link><Link className="news_link" to="/news">News</Link>Games</div>
         </nav>
     )
 }

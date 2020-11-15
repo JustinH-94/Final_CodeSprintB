@@ -1,11 +1,10 @@
-//import { Tv } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react'
 import {m4gCollection } from '../data/firebase';
 import DataPage from './data_page';
 import "./dataListing.css"
 import Loading from './loading';
 
-function DataListing() {
+function NewsListing() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [order, setOrder] = useState("latest");
@@ -23,19 +22,19 @@ function DataListing() {
         const onError=(error)=>{console.error(error)};
         setLoading(true);
         if(order==="latest"){
-            const unsubscribe = m4gCollection.orderBy("addition","desc").onSnapshot(onNext, onError);
+            const unsubscribe = m4gCollection.orderBy("addition","desc").where("articleType","==", "news").onSnapshot(onNext, onError);
             return unsubscribe;
         }
         if(order==="oldest"){
-            const unsubscribe = m4gCollection.orderBy("addition","asc").onSnapshot(onNext, onError);//.where("rating", "==",9) Add this before onSnapshot to specific values of fields to be displayed
+            const unsubscribe = m4gCollection.orderBy("addition","asc").where("articleType","==", "news").onSnapshot(onNext, onError);//.where("rating", "==",9) Add this before onSnapshot to specific values of fields to be displayed
             return unsubscribe;
         }
         else if(order==="desc"){
-            const unsubscribe = m4gCollection.orderBy("rating", "desc").onSnapshot(onNext, onError);
+            const unsubscribe = m4gCollection.orderBy("rating", "desc").where("articleType","==", "news").onSnapshot(onNext, onError);
             return unsubscribe;
         }
         else if(order==="asc"){
-            const unsubscribe = m4gCollection.orderBy("rating", "asc").onSnapshot(onNext, onError);
+            const unsubscribe = m4gCollection.orderBy("rating", "asc").where("articleType","==", "news").onSnapshot(onNext, onError);
             return unsubscribe;
         }
     },[order]);
@@ -72,5 +71,4 @@ function DataListing() {
     )
 }
 
-
-export default DataListing
+export default NewsListing;

@@ -3,12 +3,19 @@ ul {
 }
 
 li {
-  margin: 0.25rem 0 0 50%;
+  margin: 1rem 0 0 20%;
 }
 
 .order__of {
-  margin: 3% 0 0 80%;
+  margin: 3% 0 0 90%;
   width: 8%;
   height: 30px;
   font-size: 20px;
+}
+
+.loading__place {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

@@ -9,11 +9,12 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "ckeditor-react": "^1.0.1",
-    "ckeditor4-react": "^1.2.0",
+    "ckeditor4-react": "^1.2.1",
     "firebase": "^7.24.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
+    "react-loading": "^2.0.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },

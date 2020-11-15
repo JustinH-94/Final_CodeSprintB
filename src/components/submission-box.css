@@ -7,10 +7,10 @@
 }
 
 .select__box {
-  width: 10rem;
+  width: 20%;
   height: 20px;
   font-size: 15px;
-  margin: 0 0 0 10rem;
+  margin: 0 0 0 20%;
 }
 .form__submit {
   margin: 1rem 15rem 0 15rem;
@@ -20,4 +20,24 @@
 
 .textbox {
   width: 100px;
+}
+
+.form__input_num {
+  width: 10%;
+}
+
+.select__box_articleType {
+  margin: 0 0 0 11%;
+  width: 20%;
+  height: 20px;
+  font-size: 15px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form__message {
+  text-align: center;
+  font-size: 20px;
 }
