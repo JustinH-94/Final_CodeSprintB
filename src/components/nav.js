@@ -10,7 +10,7 @@ function Nav() {
                 <img alt="" src={Plus}/>
             </Link>
             <Link className="logo" to="/" style={{textDecoration:'none'}}>RNG</Link>
-            <Link className="login" to="/" style={{textDecoration:'none'}}>Login</Link>
+            <Link className="login" to="/account" style={{textDecoration:'none'}}>Login</Link>
             <div><Link className="review_link" to="/review">Review</Link><Link className="news_link" to="/news">News</Link>Games</div>
         </nav>
     )

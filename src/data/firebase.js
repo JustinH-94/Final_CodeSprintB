@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
+import "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBnC_Bf8BMjOoXEPA0ndiJZQLJzDlsgcM0",
@@ -13,6 +14,9 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+const provider = new firebase.auth.GoogleAuthProvider();
+const auth = firebase.auth();
+
 const db = firebase.firestore();
 const moviesCollection = db.collection("Movies");
 const gamesCollection = db.collection("Games");
@@ -20,4 +24,4 @@ const tvCollection = db.collection("TV");
 const m4gCollection = db.collection("M4G");
 
 export default db;
-export {moviesCollection, gamesCollection, tvCollection,m4gCollection};
+export {moviesCollection, gamesCollection, tvCollection,m4gCollection, provider,auth, firebase};

@@ -32,10 +32,28 @@ function EditDoc(props) {
         }
         getData();
     }, [id])
-    const EditSubmit=async(data)=>{
+    const EditSubmit=async(title,releaseYr,type,articleText,articleType,rating)=>{
         isSaving(true);
         try{
-            await m4gCollection.add(data);
+            if(articleType === "news"){
+                await m4gCollection.doc(id).set({
+                    title,
+                    releaseYr,
+                    type,
+                    articleText,
+                    articleType,
+                })
+            }
+            else{
+                await m4gCollection.doc(id).set({
+                    title,
+                    releaseYr,
+                    type,
+                    articleText,
+                    articleType,
+                    rating
+                })
+            }
             setSuccessMessage("Successfully edited the document!");
         }catch(error){
             console.error(error);

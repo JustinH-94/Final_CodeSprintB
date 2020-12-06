@@ -1,6 +1,8 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { auth } from "firebase";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import ArticlePage from "../img/ArticlePage";
+import AccountPage from "../pages/account-page";
 import EditDocPage from "../pages/EditDocPage";
 import PageNonexistant from "../pages/pagenonexistant";
 import AddForm from "./addForm";
@@ -13,39 +15,61 @@ import Nav from "./nav";
 import NewsListing from "./news";
 import ReviewListing from "./reviewListing";
 
+function AuthenticatedRoute(props){
+  const {isAuthenticated, children , ...routeProps} =props;
+  return <Route {...routeProps}>
+    {isAuthenticated? children: <Redirect to="/account"/>}
+  </Route>
+}
+
 function App() {
+  const [user,setUser] = useState(null);
+  const isAuthenticated = user !== null;
+
+  useEffect(()=>{ 
+    const unsubscribe = auth().onAuthStateChanged((currentUser)=>{
+      setUser(currentUser);
+    });
+    return unsubscribe;
+  },[]);
   return (
     <BrowserRouter>
-      <Nav />
+      <Nav user={user}/>
 
       <Switch>
-        <Route path="/" exact>
-          <DataListing/>
+        <Route path="/account">
+          <AccountPage user={user}/>
         </Route>
-
-        <Route path="/add">
-          <AddForm/>
-        </Route>
-
-        <Route path="/review">
-          <ReviewListing/>
-        </Route>
-
-        <Route path="/news">
-          <NewsListing/>
-        </Route>
-        <Route path="/edit/:type/:id">
-          <EditDocPage/>
-        </Route>
-        <Route path="/:type/:id">
-          <ArticlePage/>
-        </Route>
-
+        
+        <AuthenticatedRoute path="/" exact isAuthenticated={isAuthenticated}>
+          <DataListing user={user}/>
+        </AuthenticatedRoute>
         
 
-        <Route path="*">
+        <AuthenticatedRoute path="/add" isAuthenticated={isAuthenticated}>
+          <AddForm user={user}/>
+        </AuthenticatedRoute>
+
+        <AuthenticatedRoute path="/review" isAuthenticated={isAuthenticated}>
+          <ReviewListing user={user}/>
+        </AuthenticatedRoute>
+
+        <AuthenticatedRoute path="/news" isAuthenticated={isAuthenticated}>
+          <NewsListing user={user}/>
+        </AuthenticatedRoute>
+          
+        <AuthenticatedRoute path="/edit/:type/:id" isAuthenticated={isAuthenticated}>
+          <EditDocPage user={user}/>
+        </AuthenticatedRoute>
+      
+        <AuthenticatedRoute path="/:type/:id" isAuthenticated={isAuthenticated}>
+          <ArticlePage user={user}/>
+        </AuthenticatedRoute>
+
+        
+        <AuthenticatedRoute path="*">
           <PageNonexistant/>
-        </Route>
+        </AuthenticatedRoute>
       </Switch>
     </BrowserRouter>
   );
