@@ -11,6 +11,7 @@ function EditDoc(props) {
     const [docData, setDocData] = useState(null);
     const [saving, isSaving] = useState(false);
     const [successMessage, setSuccessMessage] = useState("");
+    const isEdit =true;
     
     useEffect(() => {
         async function getData(){
@@ -32,28 +33,10 @@ function EditDoc(props) {
         }
         getData();
     }, [id])
-    const EditSubmit=async(title,releaseYr,type,articleText,articleType,rating)=>{
+    const EditSubmit=async(data)=>{
         isSaving(true);
         try{
-            if(articleType === "news"){
-                await m4gCollection.doc(id).set({
-                    title,
-                    releaseYr,
-                    type,
-                    articleText,
-                    articleType,
-                })
-            }
-            else{
-                await m4gCollection.doc(id).set({
-                    title,
-                    releaseYr,
-                    type,
-                    articleText,
-                    articleType,
-                    rating
-                })
-            }
+            await m4gCollection.add(data);
             setSuccessMessage("Successfully edited the document!");
         }catch(error){
             console.error(error);
@@ -70,10 +53,12 @@ function EditDoc(props) {
                 backgroundColor="rgb(255, 255, 255, 0.2)"/>
                 )}
             {docData && <SubmissionBox
+            
             initialize={docData}
             onSubmit={EditSubmit}
             saving={saving}
-            message={successMessage}/>}
+            message={successMessage}
+            edit={isEdit}/>}
         </div>
     )
 }

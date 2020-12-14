@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import  {m4gCollection} from '../data/firebase';
+import  {m4gCollection, UserCollection} from '../data/firebase';
 import SubmissionBox from './submission-box';
-function AddForm() {
+function AddForm(props) {
+    const userID = props.user.uid;
     const [saving, setSaving] =useState(false);
     const [isSuccessMessage, setISSuccessMessage] =useState("");
 
@@ -10,6 +11,7 @@ function AddForm() {
         setISSuccessMessage("");
         try{
             await m4gCollection.add(data)
+            await UserCollection.doc(userID).collection("movies").add(data);
             setISSuccessMessage("Successfully Saved The Submission!");
             console.log("Saved");
         }

@@ -4,7 +4,9 @@ import "./submission-box.css"
 import CKEditor from "ckeditor4-react"
 
 function SubmissionBox(props) {
-    const {initialize ={},message, saving, onSubmit } = props;
+    const {initialize ={},message, saving, onSubmit, edit } = props;
+    let size;
+    db.collection("M4G").get().then(snap=>{size = snap.size});
 
     if(initialize.title === undefined)initialize.title="";
     if(initialize.rating === undefined)initialize.rating=1;
@@ -12,14 +14,13 @@ function SubmissionBox(props) {
     if(initialize.articleText === undefined)initialize.articleText="Please don't add images to this editor";
     if(initialize.type === undefined)initialize.type="Games";
     if(initialize.articleType === undefined)initialize.articleType="review";
+    if(initialize.addition == undefined)initialize.addition = size;
     const [title, setTitle] =useState(initialize.title);
     const [rating, setRating] =useState(initialize.rating);
     const [releaseYr, setReleaseYr] = useState(initialize.releaseYr);
     const [type, setType] =useState(initialize.type);
     const [articleText, setArticleText] = useState(initialize.articleText);
     const [articleType, setArticleType] = useState(initialize.articleType)
-    let size;
-    db.collection("M4G").get().then(snap=>{size = snap.size});
     const onTitleChange = (event) =>{
         setTitle(event.target.value);
     };
@@ -49,22 +50,43 @@ function SubmissionBox(props) {
         console.log(articleText);
         let addition = size;
         let data;
-        if(articleType ==="news"){
-            data ={
-                title,
-                type,
-                addition:addition+1,
-                articleText,
-                articleType
+        if(edit === true){
+            if(articleType ==="news"){
+                data ={
+                    title,
+                    type,
+                    addition,
+                    articleText,
+                    articleType
+                }
+            }else{
+                data={title,
+                    rating:numRating,
+                    releaseYr:numYr,
+                    type, 
+                    addition,
+                    articleText,
+                    articleType}
             }
-        }else{
-            data={title,
-                rating:numRating,
-                releaseYr:numYr,
-                type, 
-                addition:addition+1,
-                articleText,
-                articleType}
+        }
+        else{
+            if(articleType==="news"){
+                data ={
+                    title,
+                    type,
+                    addition:addition+1,
+                    articleText,
+                    articleType
+                }
+            }else{
+                data={title,
+                    rating:numRating,
+                    releaseYr:numYr,
+                    type, 
+                    addition:addition+1,
+                    articleText,
+                    articleType}
+            }
         }
         
         onSubmit(data);

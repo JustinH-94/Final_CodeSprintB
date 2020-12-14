@@ -22,6 +22,7 @@ const moviesCollection = db.collection("Movies");
 const gamesCollection = db.collection("Games");
 const tvCollection = db.collection("TV");
 const m4gCollection = db.collection("M4G");
+const UserCollection = db.collection("Users");
 
 export default db;
-export {moviesCollection, gamesCollection, tvCollection,m4gCollection, provider,auth, firebase};
+export {moviesCollection, UserCollection, gamesCollection, tvCollection,m4gCollection, provider,auth, firebase};

@@ -5,7 +5,8 @@ import DataPage from './data_page';
 import "./dataListing.css"
 import Loading from './loading';
 
-function DataListing() {
+function DataListing(props) {
+    console.log(props.user.uid)
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [order, setOrder] = useState("latest");

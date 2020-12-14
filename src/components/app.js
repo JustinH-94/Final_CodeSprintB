@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import ArticlePage from "../img/ArticlePage";
 import AccountPage from "../pages/account-page";
+import CollectionPage from "../pages/CollectionPage";
 import EditDocPage from "../pages/EditDocPage";
 import PageNonexistant from "../pages/pagenonexistant";
 import AddForm from "./addForm";
@@ -14,6 +15,7 @@ import DataListing from "./dataListing";
 import Nav from "./nav";
 import NewsListing from "./news";
 import ReviewListing from "./reviewListing";
+import UserDataListings from "./user-dataListings";
 
 function AuthenticatedRoute(props){
   const {isAuthenticated, children , ...routeProps} =props;
@@ -42,7 +44,11 @@ function App() {
         </Route>
         
         <AuthenticatedRoute path="/" exact isAuthenticated={isAuthenticated}>
-          <DataListing user={user}/>
+          <CollectionPage user={user}/>
+        </AuthenticatedRoute>
+
+        <AuthenticatedRoute path="/userdatalist" exact isAuthenticated={isAuthenticated}>
+          <UserDataListings user={user}/>
         </AuthenticatedRoute>
         
 

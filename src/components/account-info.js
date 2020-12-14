@@ -1,11 +1,14 @@
 import { auth } from 'firebase';
 import React, { useState } from 'react'
 import { provider } from '../data/firebase';
+import UserName from '../hooks/use-userName';
 
 function AccountInfo(props) {
-    console.log("Hello");
+    
     const {user}=props;
+    //console.log(props.user.uid);
     const [isLoading, setIsLoading] = useState(false);
+    //const [userName] = UserName();
 
     const signIn = async () => {
         setIsLoading(true);
@@ -26,11 +29,12 @@ function AccountInfo(props) {
     }
 
     let contents;
+    let userID;
     if(user){
-        const {displayName} = user;
+        const {displayName, uid} = user;
+        userID = uid;
         contents = (
             <>
-                <p>Welcome Back {displayName}!</p>
                     <button className="login-form__button" onClick={signOut} disabled={isLoading}>
                         {isLoading ? "Signing Out ..." : "Sign Out"}
                     </button>     
@@ -52,6 +56,9 @@ function AccountInfo(props) {
             <h1>Account Info</h1>
             <div>
                 <h2>Social Login</h2>
+            <div>
+                <UserName uid={userID}/> 
+            </div>
                     {contents}
             </div>
         </div>
