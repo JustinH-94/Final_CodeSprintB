@@ -2,9 +2,9 @@ import { Delete, Edit } from '@material-ui/icons';
 import React, { useState } from 'react'
 import { Link, useHistory} from 'react-router-dom';
 import "./data_page.css";
-import {m4gCollection} from "../data/firebase"
+import {m4gCollection, UserCollection} from "../data/firebase"
 function DataPage(props) {
-    const {id, data} = props;
+    const {id, data, isLogged, userID} = props;
     const {title, rating, type} = data;
     const history = useHistory();
     const rateQuanitfier = "🌟".repeat(rating)+"⭐".repeat(10-rating);
@@ -13,7 +13,9 @@ function DataPage(props) {
     const deleteDoc=async()=>{
         setIsDelete(true);
         try{
-            const docRef = m4gCollection.doc(id);
+            const docRef = UserCollection.doc(userID).collection("M4GCollection").doc(id);
+            const m4gRef = m4gCollection.doc(id);
+            await m4gRef.delete();
             await docRef.delete();
         }catch(error){console.error(error);}
         setIsDelete(false);
@@ -33,8 +35,11 @@ function DataPage(props) {
                     
                 </button>
             </Link>
-            <button className="edit__doc" onClick={()=>history.push(`edit/${type}/${id}`)}><Edit/></button>
-            <button className="delete__doc" disabled={isDelete} onClick={deleteDoc} ><Delete/></button>          
+            {isLogged === true ? (<>
+                <button className="edit__doc" onClick={()=>history.push(`edit/${type}/${id}`)}><Edit/></button>
+                <button className="delete__doc" disabled={isDelete} onClick={deleteDoc} ><Delete/></button>          
+                </>
+            ):(<p></p>)}
         </div>
     )
 }

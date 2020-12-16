@@ -14,7 +14,7 @@ function SubmissionBox(props) {
     if(initialize.articleText === undefined)initialize.articleText="Please don't add images to this editor";
     if(initialize.type === undefined)initialize.type="Games";
     if(initialize.articleType === undefined)initialize.articleType="review";
-    if(initialize.addition == undefined)initialize.addition = size;
+    if(initialize.addition === undefined)initialize.addition = size;
     const [title, setTitle] =useState(initialize.title);
     const [rating, setRating] =useState(initialize.rating);
     const [releaseYr, setReleaseYr] = useState(initialize.releaseYr);

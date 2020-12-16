@@ -2,11 +2,11 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import EditDoc from '../components/edit_doc'
 
-function EditDocPage() {
+function EditDocPage(props) {
     const{id}=useParams();
     return (
         <main>
-            <EditDoc id={id}/>
+            <EditDoc id={id} {...props}/>
         </main>
     )
 }

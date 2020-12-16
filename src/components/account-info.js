@@ -9,7 +9,6 @@ function AccountInfo(props) {
     //console.log(props.user.uid);
     const [isLoading, setIsLoading] = useState(false);
     //const [userName] = UserName();
-
     const signIn = async () => {
         setIsLoading(true);
         try{
@@ -31,7 +30,7 @@ function AccountInfo(props) {
     let contents;
     let userID;
     if(user){
-        const {displayName, uid} = user;
+        const {uid} = user;
         userID = uid;
         contents = (
             <>
@@ -55,7 +54,6 @@ function AccountInfo(props) {
         <div>
             <h1>Account Info</h1>
             <div>
-                <h2>Social Login</h2>
             <div>
                 <UserName uid={userID}/> 
             </div>

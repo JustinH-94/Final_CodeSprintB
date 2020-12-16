@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import AccountInfo from '../components/account-info';
 
 function AccountPage(props) {
-    console.log("Hello");
     return (
         <main>
             <Helmet>

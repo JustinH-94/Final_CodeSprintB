@@ -11,7 +11,7 @@ function AddForm(props) {
         setISSuccessMessage("");
         try{
             await m4gCollection.add(data)
-            await UserCollection.doc(userID).collection("movies").add(data);
+            await UserCollection.doc(userID).collection("M4GCollection").add(data);
             setISSuccessMessage("Successfully Saved The Submission!");
             console.log("Saved");
         }

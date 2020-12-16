@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { m4gCollection } from '../data/firebase';
+import { m4gCollection, UserCollection } from '../data/firebase';
 import Loading from './loading';
 import SubmissionBox from './submission-box';
 
 function EditDoc(props) {
-    const{id}=props;
-    let docType
+    const{id, user}=props;
+    const userID = user.uid;
     const [loading, setLoading] =useState(false);
     const [docData, setDocData] = useState(null);
     const [saving, isSaving] = useState(false);
@@ -17,13 +17,11 @@ function EditDoc(props) {
         async function getData(){
             setLoading(true);
             try{
-                const docSnapshot = await m4gCollection.doc(id).get();
+                const docSnapshot = await UserCollection.doc(userID).collection("M4GCollection").doc(id).get(); 
                 if(!docSnapshot.exists){
                     throw new Error("This item does not exist")
                 }
                 const data = docSnapshot.data();
-                const {type}=data;
-                docType =type;
                 setDocData(data);
             }
             catch(error){
@@ -32,11 +30,12 @@ function EditDoc(props) {
             setLoading(false);
         }
         getData();
-    }, [id])
+    }, [id, userID])
     const EditSubmit=async(data)=>{
         isSaving(true);
         try{
-            await m4gCollection.add(data);
+            await m4gCollection.doc(id).set(data);
+            await UserCollection.doc(userID).collection("M4GCollection").doc(id).set(data);
             setSuccessMessage("Successfully edited the document!");
         }catch(error){
             console.error(error);
@@ -45,7 +44,7 @@ function EditDoc(props) {
     }
     return (
         <div>
-            <h1>Edit {docType}</h1>
+            <h1>Edit</h1>
             {loading && (
                 <Loading
                 size="10px"

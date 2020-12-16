@@ -20,7 +20,7 @@ function UserNameSubmission(props) {
             {message && <p className="form_message">{message}</p>}
             <fieldset>
                 <label>Set UserName:</label>
-                <input className="" type="text" value={userName} onChange={onUserNameChange}/>
+                <input className="form__input_name" type="text" value={userName} onChange={onUserNameChange}/>
                 <input className="form__submit" type="submit" value={saving ? "Saving..." : "Save"}></input>
             </fieldset>
         </form>

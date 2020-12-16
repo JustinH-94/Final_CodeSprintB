@@ -5,7 +5,8 @@ import Loading from './loading';
 
 function UserDataListings(props) {
     const userID = props.user.uid;
-    const [data, loading] = UseAllData(userID);console.log(data);
+    const isLogged = true;
+    const [data, loading] = UseAllData(userID);
     return (
         <div>
             <div className="loading__place">
@@ -21,7 +22,7 @@ function UserDataListings(props) {
                     const id = dataInfo.id;
                     const content = dataInfo.data();
 
-                    return <li key={id}><DataPage id={id} data ={content}/></li>
+                    return <li key={id}><DataPage id={id} data ={content} isLogged={isLogged} userID={userID}/></li>
                 })} 
             </ul>
         </div>

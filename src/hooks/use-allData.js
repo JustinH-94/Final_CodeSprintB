@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { UserCollection } from '../data/firebase';
 
 function UseAllData(userID) {
@@ -18,10 +18,10 @@ function UseAllData(userID) {
             setIsLoading(false);
             console.error(error);
         };
-        const unsubscribe = UserCollection.doc(userID).collection("movies").onSnapshot(onNext, onError);
+        const unsubscribe = UserCollection.doc(userID).collection("M4GCollection").onSnapshot(onNext, onError);
 
         return unsubscribe;
-    }, [])
+    }, [userID])
     return [data, isLoading];
 }
 
