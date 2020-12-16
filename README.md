@@ -6,4 +6,4 @@
  
  
  ## Images
-<img src="images/AccountPage.PNG" width="100">
+<img src="images/AccountPage.PNG" width="100"> <img src="images/mainpage.PNG" width="100">
