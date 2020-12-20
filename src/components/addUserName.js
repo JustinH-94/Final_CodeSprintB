@@ -11,11 +11,11 @@ function AddUserName(props) {
         setMessage("");
         try{
             if(userID === null){
-                await UserCollection.doc(userID).add(data);
+                await UserCollection.add(data);
                 setMessage("Successfully Saved The Submission!");
             }
             else{
-                await UserCollection.doc(userID).set(data);
+                await UserCollection.doc(userID).update({"userName": data});
                 setMessage("Successfully Saved The Submission!");
             }
         }catch(error){
@@ -26,7 +26,7 @@ function AddUserName(props) {
     }
         return (
         <div>
-            <h3>User Name Submission:</h3>
+            
             <UserNameSubmission onSubmit={onUserNameSub} sainvg={saving} message={message} />
         </div>
     )

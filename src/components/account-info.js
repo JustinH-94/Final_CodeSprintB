@@ -2,7 +2,7 @@ import { auth } from 'firebase';
 import React, { useState } from 'react'
 import { provider } from '../data/firebase';
 import UserName from '../hooks/use-userName';
-
+import "./userNameSub.css";
 function AccountInfo(props) {
     
     const {user}=props;
@@ -52,12 +52,13 @@ function AccountInfo(props) {
     }
     return (
         <div>
-            <h1>Account Info</h1>
             <div>
-            <div>
-                <UserName uid={userID}/> 
-            </div>
+                <div>
+                    <UserName uid={userID}/> 
+                </div>
+                <div className="signOut__signIn">
                     {contents}
+                </div>
             </div>
         </div>
     );

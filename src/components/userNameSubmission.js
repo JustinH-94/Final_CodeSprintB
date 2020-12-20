@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import "./userNameSub.css";
 function UserNameSubmission(props) {
     const {initialize ={}, message, saving, onSubmit} = props;
     if(initialize.UserName === undefined)initialize.UserName="";
@@ -19,6 +19,7 @@ function UserNameSubmission(props) {
         <form onSubmit={onUserNameSub}>
             {message && <p className="form_message">{message}</p>}
             <fieldset>
+            <h3 className="username__prompt">User Name Submission:</h3>
                 <label>Set UserName:</label>
                 <input className="form__input_name" type="text" value={userName} onChange={onUserNameChange}/>
                 <input className="form__submit" type="submit" value={saving ? "Saving..." : "Save"}></input>

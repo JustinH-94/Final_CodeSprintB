@@ -11,7 +11,7 @@ function Nav(props) {
                 <img alt="" src={Plus}/>
             </Link>
             <Link className="logo" to="/" style={{textDecoration:'none'}}>RNG</Link>
-            <Link className="" to="/userdatalist" style={{textDecoration:'none'}}>Your List</Link>
+            <Link className="userList" to="/userdatalist" style={{textDecoration:'none'}}>Your List</Link>
             <Link className="login" to="/account" style={{textDecoration:'none'}}>Account</Link>
 
             <div><Link className="review_link" to="/review">Review</Link><Link className="news_link" to="/news">News</Link>Games</div>

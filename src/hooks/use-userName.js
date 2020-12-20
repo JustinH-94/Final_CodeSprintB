@@ -21,7 +21,7 @@ function UserName(props) {
     return (
     <div>
         <div>
-            <h2>{message}</h2>    
+            <h2 className="user__greeting">{message}</h2>    
             <AddUserName userID={userID}/>
         </div>
     </div>)

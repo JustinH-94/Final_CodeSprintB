@@ -1,5 +1,5 @@
 .login {
-  margin: 0 0 0 30%;
+  margin: 0 0 0 25%;
   text-align: right;
   color: rgb(123, 253, 97);
   border-style: solid;
@@ -24,4 +24,11 @@ nav {
 .news_link {
   color: rgb(123, 253, 97);
   text-decoration: none;
+}
+
+.userList {
+  margin: 0 0 0 05%;
+  color: rgb(123, 253, 97);
+  text-align: right;
+  font-size: 2rem;
 }
