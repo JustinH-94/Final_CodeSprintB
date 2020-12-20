@@ -4,5 +4,6 @@
   
   After working the weekly assignments for the movie review app. I got the idea to create a general news/review app like a Rotten Tomatoes or an IGN. I've general been interested in wanting to write reviews and news as a small hobby. So, figured to go ahead and make an app for just that.
  
- ## Images
  
+ ## Images
+<img src="images/AccountPage.PNG" width="200"> <img src="images/mainpage.PNG" width="200">
