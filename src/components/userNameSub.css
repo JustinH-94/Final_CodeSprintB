@@ -26,3 +26,11 @@ label {
   height: 50px;
   font-size: 1.5rem;
 }
+
+.signOut__signIn {
+  margin-left: 32%;
+}
+
+.login-form__button {
+  margin-left: 20%;
+}
